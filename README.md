@@ -100,6 +100,22 @@ To make testing incredibly easy while avoiding "undefined reference" linker erro
 ### 🚨 The Norm
 Moulinette relies on a program called `norminette` to check if your files comply with the Norm. Every single `.c` and `.h` file must pass. 
 
+**The 42 Header:**
+Before writing any code, every file must start with the standard 42 header. `norminette` will automatically fail any file missing this specific signature.
+```c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: maaugust <maaugust@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/24 20:04:47 by maaugust          #+#    #+#             */
+/*   Updated: 2025/02/26 18:16:53 by maaugust         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+```
+
 Run the following command before pushing:
 ```bash
 norminette -R CheckForbiddenSourceHeader <file.c>
