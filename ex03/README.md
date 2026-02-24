@@ -12,7 +12,7 @@ This follows the exact same logic as `ex02`, but the ASCII boundaries have chang
    *Check out the source file here:* **[`ft_str_is_numeric.c`](ft_str_is_numeric.c)**
 
 2. **Testing:**
-   Use the master **[`tester.c`](../tester.c)** file provided in the root `C-01` directory. Pass the `-D EX03` flag to the compiler to selectively activate the test for this specific exercise!
+   Use the master **[`tester.c`](../tester.c)** file provided in the root `C-02` directory. Pass the `-D EX03` flag to the compiler to selectively activate the test for this specific exercise!
    ```bash
    cc -Wall -Wextra -Werror -D EX03 ../tester.c ft_str_is_numeric.c -o test_ex03
    ./test_ex03
