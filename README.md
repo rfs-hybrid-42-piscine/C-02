@@ -49,13 +49,13 @@ This module challenges you to recreate standard C library functions (like `strcp
 | :--- | :--- |
 | **[`ex07: ft_strupcase`](ex07)** | **To Uppercase:** Converts all lowercase letters to uppercase. <br><br>**Logic:** If a character falls between `'a'` and `'z'`, we subtract `32` from its ASCII value to convert it to its uppercase equivalent. |
 | **[`ex08: ft_strlowcase`](ex08)** | **To Lowercase:** Converts all uppercase letters to lowercase. <br><br>**Logic:** If a character falls between `'A'` and `'Z'`, we add `32` to its ASCII value. |
-| **[`ex09: ft_strcapitalize`](ex09)** | **Title Case:** Capitalizes the first letter of every word. <br><br>**Logic:** A "word" is defined as any sequence of alphanumeric characters. We iterate through the string, keeping a state flag. If we encounter a letter and the previous character was a non-alphanumeric symbol, we uppercase it. Otherwise, we lowercase it. |
+| **[`ex09: ft_strcapitalize`](ex09)** | **Title Case:** Capitalizes the first letter of every word. <br><br>**Logic:** A "word" is defined as any sequence of alphanumeric characters. We evaluate characters using custom static helper functions (`ft_isalnum`, `ft_islower`, `ft_isupper`). If a letter is at the very beginning of the string (`i == 0`) or immediately follows a non-alphanumeric character, we mathematically shift it to uppercase. Otherwise, we force it to lowercase. |
 
 ### 🚀 Advanced Output & Memory Display
 | Exercise | Concept & Logic |
 | :--- | :--- |
-| **[`ex11: ft_putstr_non_printable`](ex11)** | **Hexadecimal Escape:** Prints a string, converting non-printable characters into hex. <br><br>**Logic:** We evaluate each character. If it is printable, we write it normally. If it is non-printable (e.g., `\n`), we print a backslash `\` followed by its two-digit hexadecimal representation (e.g., `\0a`). |
-| **[`ex12: ft_print_memory`](ex12)** | **The Hex Dump:** Recreating a classic memory inspection tool. <br><br>**Logic:** This prints memory in 16-byte chunks per line. It requires three columns: the 16-character hexadecimal memory address, the raw hexadecimal content of the bytes (padded with spaces), and the printable string representation (with non-printables replaced by dots `.`). |
+| **[`ex11: ft_putstr_non_printable`](ex11)** | **Hexadecimal Escape:** Prints a string, converting non-printable characters into hex. <br><br>**Logic:** We evaluate each character. If it is printable, we write it normally. If it is non-printable (e.g., `\n`), we print a backslash `\` followed by its two-digit hexadecimal representation (e.g., `\0a`). Includes a strict cast to `(unsigned char)` before performing math to safely handle extended ASCII characters and prevent sign-extension bugs. |
+| **[`ex12: ft_print_memory`](ex12)** | **The Hex Dump:** Recreating a classic memory inspection tool. <br><br>**Logic:** This prints memory in 16-character chunks per line. It requires three columns: the 16-character hexadecimal memory address, the raw hexadecimal content of the bytes (padded with spaces), and the printable string representation (with non-printables replaced by dots `.`). To survive the strict 42 Norminette 25-line limit, `while (++i < limit)` pre-increment loops are heavily utilized. The pointer is also explicitly cast to an `(unsigned char *)` to prevent negative hex evaluation bugs. |
 
 ---
 
@@ -64,7 +64,7 @@ This module challenges you to recreate standard C library functions (like `strcp
 ### 🧪 Compilation & Testing (The Master Test)
 Unlike Shell scripts, C programs must be compiled before they can be executed. Furthermore, these exercises strictly ask for functions, not complete programs. 
 
-To make testing incredibly easy while avoiding "undefined reference" linker errors, the **[`tester.c`](tester.c)** file in the root directory uses **C Preprocessor Macros** (`#ifdef`). This allows you to selectively compile and test only the exercises you want.
+To make testing incredibly easy while avoiding "undefined reference" linker errors, the `tester.c` file in the root directory uses **C Preprocessor Macros** (`#ifdef`). This allows you to selectively compile and test only the exercises you want.
 
 1. **Clone the repository:**
    ```bash
@@ -73,7 +73,7 @@ To make testing incredibly easy while avoiding "undefined reference" linker erro
    ```
 
 2. **Test a Single Exercise:**
-   Pass the corresponding `-D EX**` flag to activate that specific test block inside **[`tester.c`](tester.c)**.
+   Pass the corresponding `-D EX**` flag to activate that specific test block inside `tester.c`.
    ```bash
    # Example for ex00:
    cc -Wall -Wextra -Werror -D EX00 tester.c ex00/ft_strcpy.c -o test_ex00
@@ -84,18 +84,18 @@ To make testing incredibly easy while avoiding "undefined reference" linker erro
    You can chain multiple `-D` flags to test several functions at once, provided you include all their `.c` files in the command.
    ```bash
    # Example for ex04 and ex05:
-   cc -Wall -Wextra -Werror -D EX04 -D EX05 tester.c ex05/ft_str_is_lowercase.c ex06/ft_str_is_uppercase.c -o test_multiple
+   cc -Wall -Wextra -Werror -D EX04 -D EX05 tester.c ex04/ft_str_is_lowercase.c ex05/ft_str_is_uppercase.c -o test_multiple
    ./test_multiple
    ```
 
-3. **Test ALL Exercises at Once:**
+4. **Test ALL Exercises at Once:**
    By passing the `-D TEST_ALL` master flag, you can activate the entire testing suite in one go!
    ```bash
    cc -Wall -Wextra -Werror -D TEST_ALL tester.c ex00/ft_strcpy.c ex01/ft_strncpy.c ex02/ft_str_is_alpha.c ex03/ft_str_is_numeric.c ex04/ft_str_is_lowercase.c ex05/ft_str_is_uppercase.c ex06/ft_str_is_printable.c ex07/ft_strupcase.c ex08/ft_strlowcase.c ex09/ft_strcapitalize.c ex10/ft_strlcpy.c ex11/ft_putstr_non_printable.c ex12/ft_print_memory.c -o test_all
    ./test_all
    ```
 
-> **⚠️ WARNING for 42 Students:** Do not push **[`tester.c`](tester.c)** or any executable files to your final Moulinette repository! They are strictly for local testing purposes. Submitting unauthorized files will result in a 0.
+> **⚠️ WARNING for 42 Students:** Do not push `tester.c` or any executable files to your final Moulinette repository! They are strictly for local testing purposes. Submitting unauthorized files will result in a 0.
 
 ### 🚨 The Norm
 Moulinette relies on a program called `norminette` to check if your files comply with the Norm. Every single `.c` and `.h` file must pass. 
