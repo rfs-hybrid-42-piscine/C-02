@@ -14,7 +14,7 @@ If you look at an ASCII table, the first 31 characters (like `\n` for newline, o
    *Check out the source file here:* **[`ft_str_is_printable.c`](ft_str_is_printable.c)**
 
 2. **Testing:**
-   Use the master **[`tester.c`](../tester.c)** file provided in the root `C-01` directory. Pass the `-D EX06` flag to the compiler to selectively activate the test for this specific exercise!
+   Use the master **[`tester.c`](../tester.c)** file provided in the root `C-02` directory. Pass the `-D EX06` flag to the compiler to selectively activate the test for this specific exercise!
    ```bash
    cc -Wall -Wextra -Werror -D EX06 ../tester.c ft_str_is_printable.c -o test_ex06
    ./test_ex06
