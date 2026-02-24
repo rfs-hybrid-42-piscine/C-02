@@ -14,7 +14,7 @@ We use a loop that runs while `i < n` and `src[i]` is not the null-terminator. H
    *Check out the source file here:* **[`ft_strncpy.c`](ft_strncpy.c)**
 
 2. **Testing:**
-   Use the master **[`tester.c`](../tester.c)** file provided in the root `C-01` directory. Pass the `-D EX01` flag to the compiler to selectively activate the test for this specific exercise!
+   Use the master **[`tester.c`](../tester.c)** file provided in the root `C-02` directory. Pass the `-D EX01` flag to the compiler to selectively activate the test for this specific exercise!
    ```bash
    cc -Wall -Wextra -Werror -D EX01 ../tester.c ft_strncpy.c -o test_ex01
    ./test_ex01
