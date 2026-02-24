@@ -12,7 +12,7 @@ Identical to the previous functions, but restricting the valid ASCII evaluation 
    *Check out the source file here:* **[`ft_str_is_uppercase.c`](ft_str_is_uppercase.c)**
 
 2. **Testing:**
-   Use the master **[`tester.c`](../tester.c)** file provided in the root `C-01` directory. Pass the `-D EX05` flag to the compiler to selectively activate the test for this specific exercise!
+   Use the master **[`tester.c`](../tester.c)** file provided in the root `C-02` directory. Pass the `-D EX05` flag to the compiler to selectively activate the test for this specific exercise!
    ```bash
    cc -Wall -Wextra -Werror -D EX05 ../tester.c ft_str_is_uppercase.c -o test_ex05
    ./test_ex05
