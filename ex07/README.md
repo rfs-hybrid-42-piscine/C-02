@@ -14,7 +14,7 @@ If it does, we mathematically convert it to uppercase. In the ASCII table, the u
    *Check out the source file here:* **[`ft_strupcase.c`](ft_strupcase.c)**
 
 2. **Testing:**
-   Use the master **[`tester.c`](../tester.c)** file provided in the root `C-02` directory. Pass the `-D EX00` flag to the compiler to selectively activate the test for this specific exercise!
+   Use the master **[`tester.c`](../tester.c)** file provided in the root `C-02` directory. Pass the `-D EX07` flag to the compiler to selectively activate the test for this specific exercise!
    ```bash
    cc -Wall -Wextra -Werror -D EX07 ../tester.c ft_strupcase.c -o test_ex07
    ./test_ex07
